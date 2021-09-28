@@ -15,5 +15,9 @@ class View
     puts "Which recipe would you like to delete (number) ?"
     gets.chomp.to_i - 1
   end
-
+  # Web search
+  def ask_for_ingredient
+    puts "What ingredient would you like us to search the web with?"
+    gets.chomp
+  end
 end
