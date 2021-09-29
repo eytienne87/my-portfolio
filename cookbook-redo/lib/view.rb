@@ -20,4 +20,10 @@ class View
     puts "What ingredient would you like us to search the web with?"
     gets.chomp
   end
+
+  def display_recipes_from_web(names, descriptions)
+    names.each_with_index do |name, index|
+      puts "#{index + 1}. #{name}: #{descriptions[index]}"
+    end
+  end
 end
