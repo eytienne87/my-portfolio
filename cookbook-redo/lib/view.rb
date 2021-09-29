@@ -2,7 +2,8 @@ class View
   # List all recipes
   def display_recipes(recipes)
     recipes.each_with_index do |recipe, index|
-      puts "#{index + 1}. #{recipe.name}: #{recipe.description}"
+      status = recipe.done? ? '[ DONE ]' : '[      ]'
+      puts "#{index + 1}. #{status} -  #{recipe.name.capitalize}: #{recipe.description.capitalize}"
     end
   end
   # Create a recipe
@@ -11,8 +12,8 @@ class View
     gets.chomp
   end
   # Delete a recipe
-  def ask_for_index
-    puts "Which recipe would you like to delete (number) ?"
+  def ask_for_index(content)
+    puts "Which recipe would you like to #{content} (number) ?"
     gets.chomp.to_i - 1
   end
   # Web search

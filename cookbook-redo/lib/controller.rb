@@ -17,13 +17,13 @@ class Controller
   def create
     name = @view.ask('name')
     description = @view.ask('description')
-    recipe = Recipe.new(name, description)
+    recipe = Recipe.new(name: name, description: description)
     @cookbook.add_recipe(recipe)
   end
 
   def destroy
     list
-    index = @view.ask_for_index
+    index = @view.ask_for_index('delete')
     @cookbook.remove_recipe(index)
   end
 
@@ -32,12 +32,26 @@ class Controller
     ingredient = @view.ask_for_ingredient
     # Obtain 5 recipe names using that ingredient on www.simplyrecipes.com
     names = scraper_name(ingredient)
-    # Obtain links to the 5 individual recipe pages using that ingredient
+    # Obtain 5 recipe descriptions using the ingredient
     links = scraper_links_to_recipe_pages(ingredient)
-    # Obtain 5 recipe descriptions on those different pages
     descriptions = scraper_description(links)
-    # Display the 5 options to the user
+    # Display the 5 options to the user and ask which one he wants to add
     @view.display_recipes_from_web(names, descriptions)
+    index = @view.ask_for_index('import')
+    # Adding the recipe to our database
+    recipe = Recipe.new(name: names[index], desscription: descriptions[index])
+    @cookbook.add_recipe(recipe)
+  end
+
+  def mark_as_done
+    # Display the recipes
+    list
+    # Ask the user which one (index) he wants to mark as done
+    index = @view.ask_for_index('mark as done')
+    # Mark the recipe as done in the database and in memory
+    @cookbook.mark_recipe_as_done(index)
+    # Display the recipes again
+    list
   end
 
   private
