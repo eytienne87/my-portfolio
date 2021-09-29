@@ -1,4 +1,3 @@
-# Cookbook
+# Portfolio
 
-A small Ruby backend application that runs in the terminal. 
-I am using Nokogiri to scrape recipes from the web and make my application more fun.
+This repo is meant as a learning ground for me to better myself using different technologies and stacks.
