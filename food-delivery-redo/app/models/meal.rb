@@ -1,5 +1,5 @@
 class Meal
-attr_reader :id
+attr_accessor :id
 
   def initialize(attributes = {})
     @id = attributes[:id]
