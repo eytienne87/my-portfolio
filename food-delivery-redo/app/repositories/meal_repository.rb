@@ -6,7 +6,7 @@ class MealRepository
     @csv_file = csv_file
     @meals = []
     @next_id = 1
-    load_csv if File.exist?(@csv_filepath)
+    load_csv if File.exist?(@csv_file)
   end
 
   def all
@@ -14,9 +14,9 @@ class MealRepository
   end
 
   def add_one_meal(meal)
-    @next_id = meal.id
-    @meals << meal
+    meal.id = @next_id
     @next_id += 1
+    @meals << meal
     save_csv
   end
 
@@ -32,7 +32,11 @@ class MealRepository
     csv_options = { headers: :first_row, header_converters: :symbol }
 
     CSV.foreach(@csv_file, csv_options) do |row|
-      @meals << Meal.new(row[:id].to_i, row[:name], row[:price].to_i)
+      row[:id] = row[:id].to_i
+      row[:price] = row[:price].to_i
+
+      meal = Meal.new(row)
+      @meals << meal
     end
     @next_id = @meals.empty? ? 1 : @meals.last.id + 1
   end
