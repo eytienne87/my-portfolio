@@ -34,7 +34,7 @@ class CustomerRepository
     CSV.foreach(@csv_file, csv_options) do |row|
       row[:id] = row[:id].to_i
 
-      customer = customer.new(row)
+      customer = Customer.new(row)
       @customers << customer
     end
     @next_id = @customers.empty? ? 1 : @customers.last.id + 1

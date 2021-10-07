@@ -5,7 +5,7 @@ class MealView
     end
   end
 
-  def ask_user_for_info(info)
+  def ask_for_meal_info(info)
     puts "What is the #{info} of the meal that you want to add?"
     gets.chomp
   end
