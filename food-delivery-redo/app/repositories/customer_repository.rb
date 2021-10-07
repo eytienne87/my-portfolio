@@ -26,6 +26,18 @@ class CustomerRepository
     end
   end
 
+  def update(index, name, address)
+    customer = @customers[index]
+    customer.name = name
+    customer.address = address
+    save_csv
+  end
+
+  def delete(index)
+    @customers.delete_at(index)
+    save_csv
+  end
+
   private
 
   def load_csv

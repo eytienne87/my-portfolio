@@ -6,7 +6,12 @@ class CustomerView
   end
 
   def ask_for_customer_info(info)
-    puts "What is the #{info} of the customer that you want to add?"
+    puts "What is the #{info} of the customer?"
     gets.chomp
+  end
+
+  def ask_for_customer_index(info)
+    puts "Which of the following customers would you like to #{info} (number)?"
+    gets.chomp.to_i - 1
   end
 end

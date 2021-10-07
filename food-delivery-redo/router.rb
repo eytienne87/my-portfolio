@@ -14,13 +14,15 @@ class Router
   private
 
   def show_manager_menu
-    puts '\nHere are your options:\n'
+    puts "\nHere are your options:\n"
     puts '1. List all meals'
     puts '2. Add a meal'
     puts '3. Edit a meal'
     puts '4. Delete a meal'
     puts '5. List all customers'
     puts '6. Add a customer'
+    puts '7. Edit a customer'
+    puts '8. Delete a customer'
     puts '0. Exit'
     puts ''
   end
@@ -33,6 +35,8 @@ class Router
     when 4 then @meals_controller.destroy
     when 5 then @customers_controller.list
     when 6 then @customers_controller.add
+    when 7 then @customers_controller.edit
+    when 8 then @customers_controller.destroy
     when 0 then stop
     else
       puts 'Wrong choice...'

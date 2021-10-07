@@ -21,4 +21,25 @@ class CustomersController
     # Add it to our customer repository (database)
     @customer_repository.add_one_customer(customer)
   end
+
+  def edit
+    # Display the list of customers
+    list
+    # Ask user which customer he wants to edit
+    index = @customer_view.ask_for_customer_index('edit')
+    # Ask him for a new name and address of his choice
+    edited_name = @customer_view.ask_for_customer_info('edited name')
+    edited_address = @customer_view.ask_for_customer_info('edited address')
+    # Update the customer
+    @customer_repository.update(index, edited_name, edited_address)
+  end
+
+  def destroy
+    # Display the list of customers
+    list
+    # Ask user which customer he wants to delete
+    index = @customer_view.ask_for_customer_index('delete')
+    # Delete the customer
+    @customer_repository.delete(index)
+  end
 end
