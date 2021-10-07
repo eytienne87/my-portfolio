@@ -26,11 +26,20 @@ class MealsController
     # Display the list of meals
     list
     # Ask user which meal he wants to edit
-    index = @meal_view.ask_for_meal_index
+    index = @meal_view.ask_for_meal_index('edit')
     # Ask him for a new name and price of his choice
     edited_name = @meal_view.ask_for_meal_info('edited name')
     edited_price = @meal_view.ask_for_meal_info('edited price').to_i
     # Update the meal
     @meal_repository.update(index, edited_name, edited_price)
+  end
+
+  def destroy
+    # Display the list of meals
+    list
+    # Ask user which meal he wants to delete
+    index = @meal_view.ask_for_meal_index('delete')
+    # Delete the meal
+    @meal_repository.delete(index)
   end
 end

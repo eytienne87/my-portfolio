@@ -33,6 +33,11 @@ class MealRepository
     save_csv
   end
 
+  def delete(index)
+    @meals.delete_at(index)
+    save_csv
+  end
+
   private
 
   def load_csv

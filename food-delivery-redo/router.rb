@@ -18,8 +18,9 @@ class Router
     puts '1. List all meals'
     puts '2. Add a meal'
     puts '3. Edit a meal'
-    puts '4. List all customers'
-    puts '5. Add a customer'
+    puts '4. Delete a meal'
+    puts '5. List all customers'
+    puts '6. Add a customer'
     puts '0. Exit'
     puts ''
   end
@@ -29,8 +30,9 @@ class Router
     when 1 then @meals_controller.list
     when 2 then @meals_controller.add
     when 3 then @meals_controller.edit
-    when 4 then @customers_controller.list
-    when 5 then @customers_controller.add
+    when 4 then @meals_controller.destroy
+    when 5 then @customers_controller.list
+    when 6 then @customers_controller.add
     when 0 then stop
     else
       puts 'Wrong choice...'

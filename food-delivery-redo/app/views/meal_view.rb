@@ -10,8 +10,8 @@ class MealView
     gets.chomp
   end
 
-  def ask_for_meal_index
-    puts 'Which of the following meals would you like to edit (number)?'
+  def ask_for_meal_index(info)
+    puts "Which of the following meals would you like to #{info} (number)?"
     gets.chomp.to_i - 1
   end
 end
