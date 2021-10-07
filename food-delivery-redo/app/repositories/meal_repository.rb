@@ -26,6 +26,13 @@ class MealRepository
     end
   end
 
+  def update(index, name, price)
+    meal = @meals[index]
+    meal.name = name
+    meal.price = price
+    save_csv
+  end
+
   private
 
   def load_csv
