@@ -20,7 +20,7 @@ class MealRepository
     save_csv
   end
 
-  def find_meal_by_id(id)
+  def find(id)
     @meals.find do |meal|
       meal.id == id
     end

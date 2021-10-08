@@ -20,7 +20,7 @@ class CustomerRepository
     save_csv
   end
 
-  def find_customer_by_id(id)
+  def find(id)
     @customers.find do |customer|
       customer.id == id
     end

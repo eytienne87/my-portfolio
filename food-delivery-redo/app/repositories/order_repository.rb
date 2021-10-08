@@ -9,7 +9,7 @@ class OrderRepository
     @employee_repository = employee_repository
     @orders = []
     @next_id = 1
-    load_csv
+    load_csv if File.exist?(@csv_file)
   end
 
   def all_undelivered
@@ -29,13 +29,14 @@ class OrderRepository
     csv_options = { headers: :first_row, header_converters: :symbol }
 
     CSV.foreach(@csv_file, csv_options) do |row|
-      row[:id] = row[:id].to_i
-      row[:delivered] == row[:delivered]
-      row[:meal_id] = row[:meal_id].to_i
-      row[:customer_id] = row[:customer_id].to_i
-      row[:employee_id] = row[:employee_id].to_i
+      # I'm using these 2-3 letter words to save space
+      id = row[:id].to_i
+      del = row[:delivered] == 'true'
+      me = @meal_repository.find(row[:meal_id].to_i)
+      cu = @customer_repository.find(row[:customer_id].to_i)
+      emp = @employee_repository.find(row[:employee_id].to_i)
 
-      order = Order.new(row)
+      order = Order.new(id: id, delivered: del, meal: me, customer: cu, employee: emp)
       @orders << order
     end
     @next_id = @orders.empty? ? 1 : @orders.last.id + 1
@@ -44,8 +45,9 @@ class OrderRepository
   def save_csv
     CSV.open(@csv_file, 'wb') do |csv|
       csv << ['id','delivered','meal_id','customer_id','employee_id']
-      @orders.each do |order| csv << [order.id, order.delivered, order.meal.id,
-                                      order.customer.id, order.employee.id]
+      @orders.each do |order| csv <<
+        [order.id, order.delivered, order.meal.id,
+         order.customer.id, order.employee.id]
       end
     end
   end
