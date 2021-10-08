@@ -1,8 +1,7 @@
 class SessionView
-
   def ask_user_for_info(info)
-  puts "Please enter your #{info}"
-  gets.chomp
+    puts "Please enter your #{info}"
+    gets.chomp
   end
 
   def welcome(username)

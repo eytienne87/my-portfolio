@@ -1,4 +1,4 @@
 id,username,password,role
-1,etienne,password123,manager
-2,alexandre,password123,rider
-3,florence,password123,rider
+1,etienne,password,manager
+2,alexandre,password,rider
+3,florence,password,rider

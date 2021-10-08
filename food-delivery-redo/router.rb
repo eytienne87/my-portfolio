@@ -34,6 +34,8 @@ class Router
     puts '6. Add a customer'
     puts '7. Edit a customer'
     puts '8. Delete a customer'
+    puts '9. List all undelivered orders'
+    puts '10. Add an order'
     puts '0. Exit'
     puts ''
   end
@@ -54,6 +56,8 @@ class Router
     when 6 then @customers_controller.add
     when 7 then @customers_controller.edit
     when 8 then @customers_controller.destroy
+    when 9 then @orders_controller.list_all_undelivered
+    when 10 then @orders_controller.add
     when 0 then stop
     else
       puts 'Wrong choice...'

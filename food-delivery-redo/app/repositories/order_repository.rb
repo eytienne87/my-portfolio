@@ -34,6 +34,7 @@ class OrderRepository
       me = @meal_repository.find(row[:meal_id].to_i)
       cu = @customer_repository.find(row[:customer_id].to_i)
       emp = @employee_repository.find(row[:employee_id].to_i)
+
       order = Order.new(id: id, delivered: del, meal: me, customer: cu, employee: emp)
       @orders << order
     end
@@ -43,10 +44,8 @@ class OrderRepository
   def save_csv
     CSV.open(@orders_csv_path, 'wb') do |csv|
       csv << ['id','delivered','meal_id','customer_id','employee_id']
-      @orders.each do |order| csv <<
-        [order.id, order.delivered, order.meal.id,
-         order.customer.id, order.employee.id]
-      end
+      # I'm using 'o' to save space
+      @orders.each { |o| csv << [o.id, o.delivered, o.meal.id, o.customer.id, o.employee.id] }
     end
   end
 end
