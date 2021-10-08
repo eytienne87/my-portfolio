@@ -12,6 +12,17 @@ class OrderRepository
     load_csv
   end
 
+  def all_undelivered
+    @orders.select { |order| order.delivered == false }
+  end
+
+  def add(order)
+    order.id = @next_id
+    @next_id += 1
+    @orders << order
+    save_csv
+  end
+
   private
 
   def load_csv
