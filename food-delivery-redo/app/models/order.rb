@@ -1,4 +1,8 @@
 class Order
+
+  attr_reader :meal, :customer, :employee
+  attr_accessor :id
+
   def inititalize(attributes = {})
     @id = attributes[:id]
     @meal = attributes[:meal]
