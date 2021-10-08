@@ -1,14 +1,24 @@
 class Router
-  def initialize(meals_controller, customers_controller)
+  def initialize(meals_controller, customers_controller, sessions_controller)
     @meals_controller = meals_controller
     @customers_controller = customers_controller
+    @sessions_controller = sessions_controller
     @running = true
   end
 
   def run
-    show_manager_menu
-    @action = gets.chomp.to_i
-    execute_manager_action
+    employee = @sessions_controller.sign_in
+    while @running
+      if employee.role == 'manager'
+        show_manager_menu
+        @action = gets.chomp.to_i
+        execute_manager_action
+      else
+        show_rider_menu
+        @action = gets.chomp.to_i
+        execute_rider_action
+      end
+    end
   end
 
   private
@@ -27,6 +37,12 @@ class Router
     puts ''
   end
 
+  def show_rider_menu
+    puts "\nHere are your options:\n"
+    puts '0. Exit'
+    puts ''
+  end
+
   def execute_manager_action
     case @action
     when 1 then @meals_controller.list
@@ -37,6 +53,14 @@ class Router
     when 6 then @customers_controller.add
     when 7 then @customers_controller.edit
     when 8 then @customers_controller.destroy
+    when 0 then stop
+    else
+      puts 'Wrong choice...'
+    end
+  end
+
+  def execute_rider_action
+    case @action
     when 0 then stop
     else
       puts 'Wrong choice...'
