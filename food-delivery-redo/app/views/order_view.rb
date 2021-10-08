@@ -1,7 +1,8 @@
 class OrderView
   def display_undelivered(undelivered)
     undelivered.each do |order|
-      puts "#{order.id}. #{order.meal.name.capitalize}"
+      status = order.delivered? ? '[  X  ]' : '[     ]'
+      puts "#{order.id}. #{order.meal.name.capitalize} #{status}"
       puts "#{order.customer.name.capitalize} - #{order.customer.address.capitalize}"
       puts "Assigned to: #{order.employee.username.capitalize}"
     end
@@ -38,5 +39,14 @@ class OrderView
     riders.each_with_index do |rider, index|
       puts "#{index + 1}. #{rider.username}"
     end
+  end
+
+  def ask_for_id
+    puts "Which order would you like to mark as done?"
+    gets.chomp.to_i
+  end
+
+  def confirmation
+    puts "Your order has been marked as delivered"
   end
 end

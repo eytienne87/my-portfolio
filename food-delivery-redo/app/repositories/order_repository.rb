@@ -23,6 +23,12 @@ class OrderRepository
     save_csv
   end
 
+  def find(id)
+    @orders.find do |order|
+      order.id == id
+    end
+  end
+
   private
 
   def load_csv

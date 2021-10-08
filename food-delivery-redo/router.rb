@@ -8,9 +8,9 @@ class Router
   end
 
   def run
-    employee = @sessions_controller.sign_in
+    @employee = @sessions_controller.sign_in
     while @running
-      if employee.role == 'manager'
+      if @employee.role == 'manager'
         show_manager_menu
         @action = gets.chomp.to_i
         execute_manager_action
@@ -42,6 +42,8 @@ class Router
 
   def show_rider_menu
     puts "\nHere are your options:\n"
+    puts '1. Mark one of my order as delivered'
+    puts '2. See all my undelivered orders'
     puts '0. Exit'
     puts ''
   end
@@ -66,6 +68,8 @@ class Router
 
   def execute_rider_action
     case @action
+    when 1 then @orders_controller.mark_my_order(@employee)
+    when 2 then @orders_controller.list_my_undelivered(@employee)
     when 0 then stop
     else
       puts 'Wrong choice...'

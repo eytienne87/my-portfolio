@@ -39,4 +39,24 @@ class OrdersController
     # Add it to the repository
     @order_repository.add(order)
   end
+
+  def mark_my_order(employee)
+    # See a list of all the rider's undelivered orders
+    list_my_undelivered(employee)
+    # Ask him/her which order he wants to mark as delivered
+    order_id = @order_view.ask_for_id
+    # Change the value of 'delivered' for that order
+    order = @order_repository.find(order_id)
+    order.delivered!
+    # Display a message to notify that the item has been marked
+    @order_view.confirmation
+  end
+
+  def list_my_undelivered(employee)
+    undelivered = @order_repository.all_undelivered
+    my_undelivered = undelivered.select do |order|
+      order.employee.username == employee.username
+    end
+    @order_view.display_undelivered(my_undelivered)
+  end
 end
