@@ -1,3 +1,4 @@
 # Portfolio
 
-This repo is meant as a learning ground for me to better myself using different technologies and stacks.
+A place where I put small projects that I do.
+
