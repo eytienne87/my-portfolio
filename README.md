@@ -1,4 +1,4 @@
 # Portfolio
 
-A place where I put small projects that I do.
+A place where I put personal projects and components.
 
