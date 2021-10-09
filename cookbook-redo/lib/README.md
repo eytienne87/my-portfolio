@@ -1,4 +1,4 @@
 # Cookbook
 
-Small Ruby backend app that runs in the terminal. 
-I am using Nokogiri to scrape information about recipes from the web.
+Basic Ruby backend app that runs in the command line. 
+I am scraping recipes from the web using Nokogiri.
