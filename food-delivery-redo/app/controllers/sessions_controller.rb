@@ -13,12 +13,12 @@ class SessionsController
     # Verify that the username is in our database
     employee = @employee_repository.find_employee_by_username(username)
     # Login the person if the credentials are correct, otherwise ask again
-      if employee && employee.password == password
-        @session_view.welcome(username)
-        employee
-      else
-        @session_view.wrong_credentials(username)
-        sign_in
-      end
+    if employee && employee.password == password
+      @session_view.welcome(username)
+      employee
+    else
+      @session_view.wrong_credentials
+      sign_in
+    end
   end
 end

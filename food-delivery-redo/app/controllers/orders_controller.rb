@@ -15,21 +15,9 @@ class OrdersController
   end
 
   def add
-    # Display meals and get a meal id
-    meals = @meal_repository.all
-    @order_view.display_meals(meals)
-    meal_index = @order_view.ask_which_meal
-    meal_id = meals[meal_index].id
-    # Display customers and get a customer id
-    customers = @customer_repository.all
-    @order_view.display_customers(customers)
-    cus_index = @order_view.ask_which_customer
-    cus_id = customers[cus_index].id
-    # Display employees (riders) and get an employee id
-    riders = @employee_repository.all_riders
-    @order_view.display_riders(riders)
-    emp_index = @order_view.ask_which_rider
-    emp_id = riders[emp_index].id
+    meal_id = obtain_meal_id
+    cus_id = obtain_customer_id
+    emp_id = obtain_employee_id
     # Get all 3 instances using the ids
     meal = @meal_repository.find(meal_id)
     cus = @customer_repository.find(cus_id)
@@ -38,6 +26,8 @@ class OrdersController
     order = Order.new(meal: meal, customer: cus, employee: emp)
     # Add it to the repository
     @order_repository.add(order)
+    # Notify the user that the order was added.
+    @order_view.confirmation('added')
   end
 
   def mark_my_order(employee)
@@ -49,7 +39,7 @@ class OrdersController
     order = @order_repository.find(order_id)
     @order_repository.mark_as_delivered(order)
     # Display a message to notify that the item has been marked
-    @order_view.confirmation
+    @order_view.confirmation('marked as delivered')
   end
 
   def list_my_undelivered(employee)
@@ -58,5 +48,31 @@ class OrdersController
       order.employee.username == employee.username
     end
     @order_view.display_undelivered(my_undelivered)
+  end
+
+  private
+
+  def obtain_meal_id
+    # Display meals and get a meal id
+    meals = @meal_repository.all
+    @order_view.display_meals(meals)
+    meal_index = @order_view.ask_which('meal')
+    meals[meal_index].id
+  end
+
+  def obtain_customer_id
+    # Display customers and get a customer id
+    customers = @customer_repository.all
+    @order_view.display_customers(customers)
+    cus_index = @order_view.ask_which('customer')
+    customers[cus_index].id
+  end
+
+  def obtain_employee_id
+    # Display employees (riders) and get an employee id
+    riders = @employee_repository.all_riders
+    @order_view.display_riders(riders)
+    emp_index = @order_view.ask_which('rider')
+    riders[emp_index].id
   end
 end

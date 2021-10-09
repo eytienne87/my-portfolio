@@ -13,7 +13,7 @@ class MealRepository
     @meals
   end
 
-  def add_one_meal(meal)
+  def add(meal)
     meal.id = @next_id
     @next_id += 1
     @meals << meal

@@ -19,7 +19,9 @@ class MealsController
     # Store it into a meal instance
     meal = Meal.new(name: name, price: price)
     # Add it to our meal repository (database)
-    @meal_repository.add_one_meal(meal)
+    @meal_repository.add(meal)
+    # Notify the user that the meal was added
+    @meal_view.confirmation('added')
   end
 
   def edit
@@ -32,6 +34,8 @@ class MealsController
     edited_price = @meal_view.ask_for_meal_info('edited price').to_i
     # Update the meal
     @meal_repository.update(index, edited_name, edited_price)
+    # Notify the user that the meal was edited
+    @meal_view.confirmation('edited')
   end
 
   def destroy
@@ -41,5 +45,7 @@ class MealsController
     index = @meal_view.ask_for_meal_index('delete')
     # Delete the meal
     @meal_repository.delete(index)
+    # Notify the user that the meal was deleted
+    @meal_view.confirmation('deleted')
   end
 end

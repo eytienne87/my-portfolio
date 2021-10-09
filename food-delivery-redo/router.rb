@@ -13,10 +13,12 @@ class Router
       if @employee.role == 'manager'
         show_manager_menu
         @action = gets.chomp.to_i
+        print `clear`
         execute_manager_action
       else
         show_rider_menu
         @action = gets.chomp.to_i
+        print `clear`
         execute_rider_action
       end
     end
@@ -26,6 +28,7 @@ class Router
 
   def show_manager_menu
     puts "\nHere are your options:\n"
+    puts '------------------'
     puts '1. List all meals'
     puts '2. Add a meal'
     puts '3. Edit a meal'
@@ -37,7 +40,7 @@ class Router
     puts '9. List all undelivered orders'
     puts '10. Add an order'
     puts '0. Exit'
-    puts ''
+    puts '------------------'
   end
 
   def show_rider_menu

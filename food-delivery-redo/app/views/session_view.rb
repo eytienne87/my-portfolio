@@ -11,10 +11,10 @@ class SessionView
   end
 
   def welcome(username)
-    puts "Welcome to the Food Delivery App #{username}!"
+    puts "Welcome to the Food Delivery App #{username.capitalize}!"
   end
 
-  def wrong_credentials(username)
-    puts "Please try again, #{username} is not a valid username."
+  def wrong_credentials
+    puts 'The information you provided is invalid, please try again.'
   end
 end
