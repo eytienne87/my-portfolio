@@ -1,7 +1,13 @@
+require 'io/console'
+
 class SessionView
-  def ask_user_for_info(info)
-    puts "Please enter your #{info}"
+  def ask_user_for_username
+    puts 'Username:'
     gets.chomp
+  end
+
+  def ask_user_for_password
+    STDIN.getpass('Password:')
   end
 
   def welcome(username)

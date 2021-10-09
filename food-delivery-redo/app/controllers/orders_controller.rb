@@ -47,7 +47,7 @@ class OrdersController
     order_id = @order_view.ask_for_id
     # Change the value of 'delivered' for that order
     order = @order_repository.find(order_id)
-    order.delivered!
+    @order_repository.mark_as_delivered(order)
     # Display a message to notify that the item has been marked
     @order_view.confirmation
   end

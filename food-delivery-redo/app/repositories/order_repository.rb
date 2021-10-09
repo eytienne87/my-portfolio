@@ -29,6 +29,11 @@ class OrderRepository
     end
   end
 
+  def mark_as_delivered(order)
+    order.delivered!
+    save_csv
+  end
+
   private
 
   def load_csv
