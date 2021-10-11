@@ -31,14 +31,14 @@ class Cookbook
 
   def load_csv
     CSV.foreach(@csv_file_path, headers: :first_row, header_converters: :symbol) do |row|
-      row[:done] = row[:done] == "true"
+      row[:done] = row[:done] == 'true'
       @recipes << Recipe.new(row)
     end
   end
 
   def save_csv
-    CSV.open(@csv_file_path, "wb") do |csv|
-      csv << ["name", "description", "done"]
+    CSV.open(@csv_file_path, 'wb') do |csv|
+      csv << ['name', 'description', 'done']
       @recipes.each do |recipe|
         csv << [recipe.name, recipe.description, recipe.done?]
       end

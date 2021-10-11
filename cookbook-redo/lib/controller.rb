@@ -39,7 +39,7 @@ class Controller
     @view.display_recipes_from_web(names, descriptions)
     index = @view.ask_for_index('import')
     # Adding the recipe to our database
-    recipe = Recipe.new(name: names[index], desscription: descriptions[index])
+    recipe = Recipe.new(name: names[index], description: descriptions[index])
     @cookbook.add_recipe(recipe)
   end
 

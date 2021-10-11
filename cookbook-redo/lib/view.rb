@@ -3,7 +3,7 @@ class View
   def display_recipes(recipes)
     recipes.each_with_index do |recipe, index|
       status = recipe.done? ? '[ DONE ]' : '[      ]'
-      puts "#{index + 1}. #{status} -  #{recipe.name.capitalize}: #{recipe.description.capitalize}"
+      puts "#{index + 1}. #{status} -  #{recipe.name.capitalize}: #{recipe.description}"
     end
   end
   # Create a recipe
