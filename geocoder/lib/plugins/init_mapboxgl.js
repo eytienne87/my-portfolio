@@ -8,6 +8,9 @@ const displayMap = (authorization, geoData) => {
     center: geoData,
     zoom: 12
   });
+  new mapboxgl.Marker()
+    .setLngLat(geoData)
+    .addTo(map);
 }
 
 export { displayMap };
