@@ -5,21 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>geocoder</title>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="container my-3">
     <form class="form-inline">
+      <!-- Form -->
       <label class="sr-only" for="inlineFormInputName2">Address</label>
       <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Type an address">
 
       <button type="submit" class="btn btn-primary mb-2">Submit</button>
     </form>
     <p>
-      <!-- Coordinates will appear here -->
+      <!-- Coordinates -->
     </p>
+    <div id="map" style="height: 300px; width: 600px">
+      <!-- Map -->
+    </div>
   </div>
-  <script src="lib\app.js"></script>
+  <script src="dist/main.js"></script>
 </body>
 </html>
