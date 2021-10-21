@@ -10,7 +10,7 @@ const extractData = (data) => {
   const latitude = geoData[1];
   const longitude = geoData[0];
   insertArea.innerText = ''
-  insertArea.insertAdjacentText('afterbegin', `${latitude},${longitude}`);
+  insertArea.insertAdjacentText('afterbegin', `${latitude}, ${longitude}`);
   displayMap(apiKey, geoData);
 };
 // Fetch longitude and latitude from the Mapbox API
