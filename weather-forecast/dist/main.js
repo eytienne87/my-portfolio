@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://weather-forecast/./lib/index.js?");
+eval("const apiKey = \"5fc564ca2ef5e986a24625cd23f78e06\"\nconsole.log(apiKey)\n\nconst callApi = () => {\n  const url = ``\n  fetch(url)\n    .then(response => response.json())\n    .then(data =>\n      console.log(data)\n    );\n};\n\n\n//# sourceURL=webpack://weather-forecast/./lib/index.js?");
 
 /***/ })
 

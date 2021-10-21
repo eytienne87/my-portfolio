@@ -2,7 +2,7 @@
   "name": "weather-forecast",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "directories": {
     "lib": "lib"
   },
@@ -14,6 +14,11 @@
   "license": "ISC",
   "devDependencies": {
     "webpack": "^5.58.2",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "dotenv-webpack": "^7.0.3"
   }
 }
