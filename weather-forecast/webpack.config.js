@@ -12,5 +12,11 @@ module.exports = {
   mode: 'development',
   plugins: [
     new Dotenv()
-  ]
+  ],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, './dist'),
+    },
+    compress: true
+  }
 }
