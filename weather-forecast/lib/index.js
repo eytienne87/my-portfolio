@@ -4,6 +4,8 @@ const cityDiv = document.getElementById('location')
 const timeDiv = document.getElementById('timestamp')
 const weatherDiv = document.getElementById('weather-type')
 const celsiusDiv = document.getElementById('celsius-with-icon')
+const form = document.querySelector('form')
+const inputForm = document.querySelector('input')
 
 // Function for converting a unix into a timestamp
 const timestampGenerator = (unix) => {
@@ -25,7 +27,7 @@ const capitalize = (str) => {
   const str2 = arr.join(" ");
   return str2
 };
-
+// Store the data that I need in variables and insert them in my Dom
 const extractData = (data) => {
   const city = data.name
   const date = data.dt
@@ -33,6 +35,10 @@ const extractData = (data) => {
   const weatherType = capitalize(data.weather[0].description)
   const celsius = Math.round(data.main.temp)
   const iconId = data.weather[0].icon
+  celsiusDiv.innerText = ''
+  weatherDiv.innerText = ''
+  timeDiv.innerText = ''
+  cityDiv.innerText = ''
   celsiusDiv.insertAdjacentHTML('afterbegin',
                                 `<div class="container d-flex justify-content-between align-items-center p-0">
                                   <p class="degree mb-0">${celsius}°C</p>
@@ -43,7 +49,7 @@ const extractData = (data) => {
   cityDiv.insertAdjacentHTML('afterbegin', `<p class="">Weather in ${city}</p>`)
 };
 
-// fetch weather data from OpenWeatherMap API
+// Fetch weather data from OpenWeatherMap API
 const callApi = (city) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
   fetch(url)
@@ -53,4 +59,10 @@ const callApi = (city) => {
     );
 };
 
-callApi('montreal')
+// Callback function
+const callback = (event) => {
+  event.preventDefault();
+  return callApi(inputForm.value)
+};
+// Add an event listener for the submission of the form
+form.addEventListener('submit', callback)
