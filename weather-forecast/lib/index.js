@@ -53,4 +53,4 @@ const callApi = (city) => {
     );
 };
 
-callApi('los angeles')
+callApi('montreal')
