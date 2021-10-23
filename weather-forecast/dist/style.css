@@ -3,4 +3,20 @@
   height: 350px;
   border: 1px solid black;
   margin-top: 20px;
+  padding-left: 16px;
+  padding-top: 16px;
+}
+
+#location {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+#celsius-with-icon {
+  padding-right: 60px;
+}
+
+.degree {
+  font-size: 24px;
+  font-weight: 400;
 }
