@@ -1,6 +1,6 @@
 # my-portfolio 🌲
 
-A place where I put personal projects and components. 
+Table of content:
 
 - Backend Ruby CLI apps
     - [cookbook](https://github.com/eytienne87/my-portfolio/tree/master/cookbook-redo/lib)
