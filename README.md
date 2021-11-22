@@ -9,5 +9,6 @@ Table of content:
     - [geocoder](https://github.com/eytienne87/my-portfolio/tree/master/geocoder)
     - [weather-forecast](https://github.com/eytienne87/my-portfolio/tree/master/weather-forecast)
 - React components/pages
-    - [task-tracker](https://github.com/eytienne87/react-task-tracker)
     - [countdown-timer](https://github.com/eytienne87/drop-zone)
+    - [task-tracker](https://github.com/eytienne87/react-task-tracker)
+
