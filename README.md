@@ -1,7 +1,9 @@
 # my-portfolio 🌲
 
 Table of content:
-
+- Rails applications
+    - [altrooist](https://github.com/eytienne87/altrooist-app)
+    - [my-mime](https://github.com/eytienne87/mymime)
 - Ruby backend CLI apps
     - [cookbook](https://github.com/eytienne87/my-portfolio/tree/master/cookbook-redo/lib)
     - [food-delivery](https://github.com/eytienne87/my-portfolio/tree/master/food-delivery-redo)
